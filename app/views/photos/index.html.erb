@@ -1,0 +1,40 @@
+<div class="page-header">
+<i class="fa fa-plus" aria-hidden="true"></i>
+    <a href="/photos/new" class="btn btn-lg btn-success">New Photo</a>
+</div>
+
+<% @photos.each do |photo| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= photo.caption %></h3>
+    <%= photos.user_id.username %></dd>
+  </div>
+
+  <div class="panel-body">
+    <ul style="list-style: none;">
+      <li><img src="<%= photo.image %>" style="width:500px;"></li>
+      <li><%= photo.user_id %></li>
+    </div>
+    <% if photo.user_id == current_user.try(:id)  %>
+
+<table>
+
+    <td>
+      <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+      <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
+      <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+    </td>
+
+    <% else %>
+
+    <td>
+      <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+    </td>
+
+    <% end %>
+
+  <% end %>
+</table>
+</div>
+</div>
+</div>
